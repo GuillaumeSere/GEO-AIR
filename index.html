@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Air Quality </title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+
+    <div class="background-layer"></div>
+    <h1>GEO AIR</h1>
+    <div class="app-container">
+
+      <div class="information-block">
+        <div class="loader active">
+          <img src="ressources/biodegradable.svg" alt="loader icon" class="loader-logo">
+        </div>
+
+        <img src="ressources/magnifying-glass.svg" alt="feeling icon" class="emoji-logo">
+        <p class="user-information">Les informations de votre ville.</p>
+
+        <table>
+          <tr>
+            <th class="label">Ville</th>
+            <td class="city-name">...</td>
+          </tr>
+          <tr>
+            <th class="label">Pollution </th>
+            <td class="pollution-info">...</td>
+          </tr>
+          <tr>
+            <th class="label">Index Qualité</th>
+            <td class="pollution-value">...</td>
+          </tr>
+        </table>
+
+        <p class="scale-bar-text">Pollution scale :</p>
+        <div class="scale-container">
+          <img src="ressources/location.svg" alt="location" class="location-pointer">
+          <div class="scale-section"></div>
+          <div class="scale-section"></div>
+          <div class="scale-section"></div>
+          <div class="scale-section"></div>
+          <div class="scale-section"></div>
+          <div class="scale-section"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
