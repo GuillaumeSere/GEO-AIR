@@ -45,7 +45,7 @@ h1 {
     top: 0;
     width: 100%;
     background: rgb(70, 124, 70);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     font-family: Roboto, sans-serif;
     text-align: center;
     font-size: 62px;
@@ -54,8 +54,8 @@ h1 {
     text-transform: uppercase;
     color: #f1f1f1;
     text-shadow:
-        1px 1px 0 #333,
-        2px 2px 0 #3a3a3a,
+        5px 1px 0 #333,
+        10px 2px 0 #3a3a3a,
         3px 3px 0 #575757,
         4px 4px 0 #6b6b6b;
 }
@@ -67,7 +67,7 @@ h1 {
     border-radius: 5px;
     padding: 25px 25px 50px;
     position: relative;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 5px 3px rgba(0, 0, 0, 0.3);
 }
 
 .loader {
