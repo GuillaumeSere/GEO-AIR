@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="site qui mesure la qualité de l'air en temps réel et avec la geolocalisation"/>
+    <meta name="description" content="site qui mesure la qualité de l'air en temps réel et avec la geolocalisation" />
     <meta name="google-site-verification" content="9MVcxa4rkcfZPi6VUf40CfGKhPsqgGj4OmedHLIFRQY" />
     <title>Qualité de l'Air en Temps Réel : Suivez les Conditions Atmosphériques Près de Chez Vous</title>
     <link rel="stylesheet" href="style.css" />
@@ -11,52 +12,62 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="shortcut icon" href="./ressources/icon.ico" type="image/x-icon">
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet" />
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y9J8WQVL72"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-Y9J8WQVL72');
+</script>
+
+<body>
 
     <div class="background-layer"></div>
     <h1>GEO AIR</h1>
     <div class="app-container">
 
-      <div class="information-block">
-        <div class="loader active">
-          <img src="ressources/biodegradable.svg" alt="loader icon" class="loader-logo">
+        <div class="information-block">
+            <div class="loader active">
+                <img src="ressources/biodegradable.svg" alt="loader icon" class="loader-logo">
+            </div>
+
+            <img src="ressources/magnifying-glass.svg" alt="feeling icon" class="emoji-logo">
+            <p class="user-information">Les informations de votre ville.</p>
+
+            <table>
+                <tr>
+                    <th class="label">Ville</th>
+                    <td class="city-name">...</td>
+                </tr>
+                <tr>
+                    <th class="label">Pollution </th>
+                    <td class="pollution-info">...</td>
+                </tr>
+                <tr>
+                    <th class="label">Index Qualité</th>
+                    <td class="pollution-value">...</td>
+                </tr>
+            </table>
+
+            <p class="scale-bar-text">Pollution scale :</p>
+            <div class="scale-container">
+                <img src="ressources/location.svg" alt="location" class="location-pointer">
+                <div class="scale-section"></div>
+                <div class="scale-section"></div>
+                <div class="scale-section"></div>
+                <div class="scale-section"></div>
+                <div class="scale-section"></div>
+                <div class="scale-section"></div>
+            </div>
         </div>
-
-        <img src="ressources/magnifying-glass.svg" alt="feeling icon" class="emoji-logo">
-        <p class="user-information">Les informations de votre ville.</p>
-
-        <table>
-          <tr>
-            <th class="label">Ville</th>
-            <td class="city-name">...</td>
-          </tr>
-          <tr>
-            <th class="label">Pollution </th>
-            <td class="pollution-info">...</td>
-          </tr>
-          <tr>
-            <th class="label">Index Qualité</th>
-            <td class="pollution-value">...</td>
-          </tr>
-        </table>
-
-        <p class="scale-bar-text">Pollution scale :</p>
-        <div class="scale-container">
-          <img src="ressources/location.svg" alt="location" class="location-pointer">
-          <div class="scale-section"></div>
-          <div class="scale-section"></div>
-          <div class="scale-section"></div>
-          <div class="scale-section"></div>
-          <div class="scale-section"></div>
-          <div class="scale-section"></div>
-        </div>
-      </div>
     </div>
 
     <script src="main.js"></script>
-  </body>
+</body>
+
 </html>
