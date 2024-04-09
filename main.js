@@ -76,7 +76,6 @@ const pollutionValue = document.querySelector(".pollution-value");
 const backgroundLayer = document.querySelector(".background-layer");
 
 function populateUI(data){
-  console.log(data);
   emojiLogo.src = `ressources/${data.src}.svg`;
   userInformation.textContent = `Voici la situation de ${data.city}.`;
   cityName.textContent = data.city;
