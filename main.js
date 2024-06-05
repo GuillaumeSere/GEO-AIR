@@ -45,7 +45,7 @@ async function getPollutionData(city = null, state = null, country = "France") {
     try {
       let url = "https://api.airvisual.com/v2/nearest_city?key=edbab99d-6a71-41d7-84f6-df605d3cf43a";
       if (city) {
-        url = `https://api.airvisual.com/v2/city?city=${city}&state=${state}&country=${country}&key=edbab99d-6a71-41d7-84f6-df605d3cf43a`;
+        url = `https://api.airvisual.com/v2/nearest_city?city=${city}&state=${state}&country=${country}&key=edbab99d-6a71-41d7-84f6-df605d3cf43a`;
       }
       
       const response = await fetch(url).catch(error => {
