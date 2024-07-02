@@ -41,12 +41,13 @@ const loader = document.querySelector(".loader");
 const emojiLogo = document.querySelector(".emoji-logo");
 const userInformation = document.querySelector(".user-information");
 
-async function getPollutionData(city = null, state = null, country = "France") {
+async function getPollutionData(lat, lon, city, state, country) {
     try {
-      let url = "https://api.airvisual.com/v2/nearest_city?key=edbab99d-6a71-41d7-84f6-df605d3cf43a";
-      if (city) {
+      const url = `http://api.airvisual.com/v2/nearest_city?lat=${lat}&lon=${lon}&key=edbab99d-6a71-41d7-84f6-df605d3cf43a`;
+      if (city && state && country) {
         url = `https://api.airvisual.com/v2/nearest_city?city=${city}&state=${state}&country=${country}&key=edbab99d-6a71-41d7-84f6-df605d3cf43a`;
       }
+      console.log(city)
       
       const response = await fetch(url).catch(error => {
         throw new Error(error); 
@@ -56,6 +57,7 @@ async function getPollutionData(city = null, state = null, country = "France") {
       throw new Error(`Error ${response.status}, ${response.statusText}`);
     } else {
       const responseData = await response.json();
+      console.log(responseData); 
       const aqi = responseData.data.current.pollution.aqius;
       
       const sortedData = {
@@ -100,10 +102,34 @@ function pointerPlacement(AQIValue) {
 
 // Ajout de la recherche par ville
 const searchButton = document.getElementById("search-button");
-searchButton.addEventListener("click", () => {
+searchButton.addEventListener("click", async () => {
   const cityInput = document.getElementById("city-input").value;
+
   if (cityInput) {
     loader.classList.add("active");
-    getPollutionData(cityInput);
+    try {
+      const response = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${cityInput}`);
+      const data = await response.json();
+      const city = data.features[0].properties.city;
+      const coordinates = data.features[0].geometry.coordinates;
+      getPollutionData(coordinates[1], coordinates[0], city);
+    } catch (error) {
+      console.error(error);
+      // Handle the error
+    }
+  } else {
+    try {
+      const location = await navigator.geolocation.getCurrentPosition(position => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        getPollutionData(lat, lon);
+      }, error => {
+        console.error(error);
+        // Handle the error
+      });
+    } catch (error) {
+      console.error(error);
+      // Handle the error
+    }
   }
 });
