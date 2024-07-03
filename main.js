@@ -103,33 +103,42 @@ function pointerPlacement(AQIValue) {
 // Ajout de la recherche par ville
 const searchButton = document.getElementById("search-button");
 searchButton.addEventListener("click", async () => {
-  const cityInput = document.getElementById("city-input").value;
-
-  if (cityInput) {
-    loader.classList.add("active");
-    try {
-      const response = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${cityInput}`);
-      const data = await response.json();
-      const city = data.features[0].properties.city;
-      const coordinates = data.features[0].geometry.coordinates;
-      getPollutionData(coordinates[1], coordinates[0], city);
-    } catch (error) {
-      console.error(error);
-      // Handle the error
-    }
-  } else {
-    try {
-      const location = await navigator.geolocation.getCurrentPosition(position => {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-        getPollutionData(lat, lon);
-      }, error => {
+    const cityInput = document.getElementById("city-input").value;
+  
+    if (cityInput) {
+      loader.classList.add("active");
+      try {
+        const response = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${cityInput}`);
+        const data = await response.json();
+        if (data.features.length === 0) { // Check if city exists
+          loader.classList.remove("active");
+          emojiLogo.src = "./ressources/browser.svg";
+          userInformation.textContent = "Ville non trouvée";
+          cityName.textContent = ""; 
+          pollutionInfo.textContent = ""; 
+          pollutionValue.textContent = ""; 
+        } else {
+          const city = data.features[0].properties.city;
+          const coordinates = data.features[0].geometry.coordinates;
+          getPollutionData(coordinates[1], coordinates[0], city);
+        }
+      } catch (error) {
         console.error(error);
         // Handle the error
-      });
-    } catch (error) {
-      console.error(error);
-      // Handle the error
+      }
+    } else {
+      try {
+        const location = await navigator.geolocation.getCurrentPosition(position => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          getPollutionData(lat, lon);
+        }, error => {
+          console.error(error);
+          // Handle the error
+        });
+      } catch (error) {
+        console.error(error);
+        // Handle the error
+      }
     }
-  }
-});
+  });
