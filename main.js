@@ -43,9 +43,9 @@ const userInformation = document.querySelector(".user-information");
 
 async function getPollutionData(lat, lon, city, state, country) {
     try {
-      const url = `https://api.airvisual.com/v2/nearest_city?lat=${lat}&lon=${lon}&key=edbab99d-6a71-41d7-84f6-df605d3cf43a`;
+      const url = `https://api.airvisual.com/v2/nearest_city?lat=${lat}&lon=${lon}&key=cdac7fb3-f028-4863-9f94-800ec09a0c03`;
       if (city && state && country) {
-        url = `https://api.airvisual.com/v2/nearest_city?city=${city}&state=${state}&country=${country}&key=edbab99d-6a71-41d7-84f6-df605d3cf43a`;
+        url = `https://api.airvisual.com/v2/nearest_city?city=${city}&state=${state}&country=${country}&key=cdac7fb3-f028-4863-9f94-800ec09a0c03`;
       }
       console.log(city)
       
@@ -128,7 +128,7 @@ searchButton.addEventListener("click", async () => {
       }
     } else {
       try {
-        const location = await navigator.geolocation.getCurrentPosition(position => {
+        await navigator.geolocation.getCurrentPosition(position => {
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
           getPollutionData(lat, lon);
